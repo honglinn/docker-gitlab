@@ -203,14 +203,14 @@ jobs:
       - checkout
       - docker-build:
           registry: docker.io,quay.io
-          image: sameersbn/gitlab
+          image: linho/gitlab-ee
           tag: ${CIRCLE_TAG:-latest}
-          cache_from: docker.io/sameersbn/gitlab:latest
+          cache_from: docker.io/linho/gitlab-ee:latest
           extra_build_args: '--build-arg VCS_REF=${CIRCLE_TAG:-${CIRCLE_SHA1}} --build-arg BUILD_DATE="$(date +"%Y-%m-%d %H:%M:%S%:z")"'
           no_output_timeout: 45m
       - docker-save:
           registry: docker.io,quay.io
-          image: sameersbn/gitlab
+          image: linho/gitlab-ee
           tag: ${CIRCLE_TAG:-latest}
 
   test:
@@ -221,7 +221,7 @@ jobs:
       - run:
           name: Update tag in docker-compose.yml
           command: |
-            sed -i "s|image: sameersbn/gitlab:.*|image: sameersbn/gitlab:${CIRCLE_TAG:-latest}|" docker-compose.yml
+            sed -i "s|image: linho/gitlab-ee:.*|image: linho/gitlab-ee:${CIRCLE_TAG:-latest}|" docker-compose.yml
       - run:
           name: Launch gitlab stack
           command: docker-compose up -d --quiet-pull
@@ -247,7 +247,7 @@ jobs:
           docker-password: DOCKER_PASSWORD
       - docker-publish:
           registry: docker.io
-          image: sameersbn/gitlab
+          image: linho/gitlab-ee
           tag: ${CIRCLE_TAG:-latest}
 
   publish-quay:
@@ -260,7 +260,7 @@ jobs:
           docker-password: DOCKER_PASSWORD
       - docker-publish:
           registry: quay.io
-          image: sameersbn/gitlab
+          image: linho/gitlab-ee
           tag: ${CIRCLE_TAG:-latest}
 
   release:

@@ -65,15 +65,15 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 LABEL \
-    maintainer="sameer@damagehead.com" \
+    maintainer="hon@hon.com" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.name=gitlab \
+    org.label-schema.name=gitlab-ee \
     org.label-schema.vendor=damagehead \
-    org.label-schema.url="https://github.com/sameersbn/docker-gitlab" \
-    org.label-schema.vcs-url="https://github.com/sameersbn/docker-gitlab.git" \
+    org.label-schema.url="https://github.com/linho/docker-gitlab" \
+    org.label-schema.vcs-url="https://github.com/linho/docker-gitlab.git" \
     org.label-schema.vcs-ref=${VCS_REF} \
-    com.damagehead.gitlab.license=MIT
+    com.damagehead.gitlab-ee.license=MIT
 
 EXPOSE 22/tcp 80/tcp 443/tcp
 
