@@ -16,7 +16,7 @@ build:
 		--build-arg VCS_REF=$(shell git rev-parse --short HEAD)
 
 release: build
-	@docker build --tag=linho/gitlab-ees:$(shell cat VERSION) . \
+	@docker build --tag=linho/gitlab-ee:$(shell cat VERSION) . \
 		--build-arg BUILD_DATE="$(shell date +"%Y-%m-%d %H:%M:%S%:z")" \
 		--build-arg VCS_REF=$(git describe --tags --always)
 
