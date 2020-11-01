@@ -64,12 +64,12 @@ exec_as_git git config --global gc.auto 0
 exec_as_git git config --global repack.writeBitmaps true
 exec_as_git git config --global receive.advertisePushOptions true
 
-# shallow clone gitlab-foss
-echo "Cloning gitlab-foss v.${GITLAB_VERSION}..."
+# shallow clone gitlab
+echo "Cloning gitlab v.${GITLAB_VERSION}..."
 exec_as_git git clone -q -b v${GITLAB_VERSION} --depth 1 ${GITLAB_CLONE_URL} ${GITLAB_INSTALL_DIR}
 
 if [[ -d "${GITLAB_BUILD_DIR}/patches" ]]; then
-echo "Applying patches for gitlab-foss..."
+echo "Applying patches for gitlab..."
 exec_as_git git -C ${GITLAB_INSTALL_DIR} apply --ignore-whitespace < ${GITLAB_BUILD_DIR}/patches/*.patch
 fi
 
